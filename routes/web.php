@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ArtikelController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,16 +14,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/', function () {
-    echo 'Selamat Datang';
-    
+// Route::get('/category/{category_name}', [ProductController::class, 'index']);
+
+// Route::get('/news/{news_name}', [NewController::class, 'index']);
+
+// Route::get('/program/{program_name}', [programController::class, 'index']);
+
+// Route::get('/about-us', [AboutController::class, 'index']);
+
+Route::get('/add', function () {
+    return view('add');
 });
-Route::get('/about', function () {
-    echo 'ALFARIZI 2141720142';
-    
-});
-Route::get('/articles/{id}', function () {
-    echo 'artikel dengan id ';
-    
-});
+Route::post('/add_process', 'ArtikelController@add_process');
+Route::get('/artikel', [ArtikelController::class, 'index']);
