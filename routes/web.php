@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\HobiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KeluargaController;
+use App\Http\Controllers\MatkulController;
+use App\Models\Hobi;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +33,6 @@ Route::get('/add', function () {
 });
 Route::post('/add_process', 'ArtikelController@add_process');
 Route::get('/artikel', [ArtikelController::class, 'index']);
+Route::get('/hobi', [HobiController::class, 'index']);
+Route::get('/matkul', [MatkulController::class, 'index']);
+Route::get('/keluarga', [KeluargaController::class, 'index']);
