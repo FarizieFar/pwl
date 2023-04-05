@@ -14,6 +14,8 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\MahasiswaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,4 +60,5 @@ Route::get('/matkul', [MatkulController::class, 'index']);
 Route::get('/keluarga', [KeluargaController::class, 'index']);
 // Route::get('logout', [LoginController::class, 'logout']);
 Route::get('/home', [HobiController::class, 'index'])->name('home');
+Route::resource('/mahasiswa', MahasiswaController::class);
 });
