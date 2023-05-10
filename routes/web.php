@@ -14,6 +14,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\MahasiswaController;
 
 /*
@@ -37,7 +38,9 @@ use App\Http\Controllers\MahasiswaController;
 // Route::get('/about-us', [AboutController::class, 'index']);
 
 
-Route::get('/', [HomeController::class, 'index']);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/', [HomeController::class, 'index']);
 Route::get('/add', function () {
     return view('add');
 });
@@ -46,8 +49,7 @@ Route::get('/artikel', [ArtikelController::class, 'index']);
 Route::get('/hobi', [HobiController::class, 'index']);
 Route::get('/matkul', [MatkulController::class, 'index']);
 Route::get('/keluarga', [KeluargaController::class, 'index']);
-Auth::routes();
-Route::get('logout', [LoginController::class, 'logout']);
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware(['auth'])->group(function(){
@@ -61,4 +63,13 @@ Route::get('/keluarga', [KeluargaController::class, 'index']);
 // Route::get('logout', [LoginController::class, 'logout']);
 Route::get('/home', [HobiController::class, 'index'])->name('home');
 Route::resource('/mahasiswa', MahasiswaController::class);
+Route::resource('/barang', BarangController::class);
 });
+
+
+Route::get('/', 'HomeController@index')->name('home');
+
+
+});
+Route::get('logout', [LoginController::class, 'logout']);
+Auth::routes();

@@ -7,17 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mahasiswa extends Model
 {
-    use HasFactory;
-    protected $table = 'mahasiswas';
-    //protected $primarykey = 'id';
+    protected $table = 'mahasiswas';//eloquent akan membuat model mahasiswa menyimpan record di tabel mahasiswa
+    protected $primarykey = 'nim';//memanggil isi DB dengan primary key
     //protected $keytype = 'int';
     protected $fillable = [
         'nim',
         'nama',
-        'jk',
-        'tempat_lahir',
-        'tanggal lahir',
-        'alamat',
-        'hp'
+        'kelas_id',
+        'jurusan',
     ];
+
+    public function kelas(){
+        return $this -> belongsTo(Kelas::class);
+    }
 }

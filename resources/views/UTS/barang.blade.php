@@ -2,33 +2,31 @@
 @section('content')
 <div class="card-body" style="margin-left: 250px;">
 
-    <a href="{{url('mahasiswa/create')}}" class="btn btn-sm btn-success my-2">Tambah Data</a>
+    <a href="{{url('/barang/create')}}" class="btn btn-sm btn-success my-2">Tambah Data</a>
 
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          {{-- <th>No</th> --}}
-          <th>NIM</th>
-          <th>Nama</th>
-          <th>Kelas</th>
-          <th>Jurusan</th>
-          <th>Action</th>
+          <th>Id</th>
+          <th>Nama_Barang</th>
+          <th>Jumlah</th>
+          <th>Deskripsi</th>
         </tr>
       </thead>
       <tbody>
-        @if($mhs->count() > 0)
-          @foreach($paginate as $mhs)
+        @if($brg->count() > 0)
+          @foreach($brg as $i => $m)
             <tr>
-              {{-- <td>{{++$i}}</td> --}}
-              <td>{{$mhs->nim}}</td>
-              <td>{{$mhs->nama}}</td>
-              <td>{{$mhs->kelas->nama_kelas}}</td>
-              <td>{{$mhs->jurusan}}</td>
+              
+              <td>{{$m->id}}</td>
+              <td>{{$m->nama_barang}}</td>
+              <td>{{$m->jumlah}}</td>
+              <td>{{$m->deskripsi}}</td>
               <td>
                 <!-- Bikin tombol edit dan delete -->
-                <a href="{{ url('/mahasiswa/'. $mhs->id.'/edit') }}" class="btn btn-sm btn-warning">edit</a>
+                <a href="{{ url('/barang/'. $m->id.'/edit') }}" class="btn btn-sm btn-warning">edit</a>
 
-                <form method="POST" action="{{ url('/mahasiswa/'.$mhs->id) }}" >
+                <form method="POST" action="{{ url('/barang/'.$m->id) }}" >
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="btn btn-sm btn-danger">hapus</button>
