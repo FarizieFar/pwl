@@ -75,3 +75,4 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('logout', [LoginController::class, 'logout']);
 Auth::routes();
 Route::resource('articles', ArticleController::class);
+Route::get('/article/cetak_pdf', [ArticleController::class, 'cetak_pdf']);
